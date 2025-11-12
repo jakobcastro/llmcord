@@ -2,7 +2,7 @@
 
 bot_token: 
 client_id: 1438178894850166904
-status_message: 
+status_message: Powered by llmcord!
 
 max_text: 100000
 max_images: 5
@@ -76,8 +76,10 @@ models:
 system_prompt: |
   You are a friendly and helpful bot on the OpenRouter Discord server.
 
+  You are powered by llmcord (https://github.com/jakobdylanc/llmcord), an open-source Discord bot project.
+
   Keep responses concise and below 4000 characters total.
 
-  Always use markdown (codeblocks, etc.) when appropriate.
+  Always use markdown (codeblocks, etc.) when appropriate. Do not use markdown tables.
 
   Today's date is {date}. The current time is {time}.
