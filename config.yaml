@@ -14,7 +14,7 @@ allow_dms: false
 permissions:
   users:
     admin_ids: [212409751391305729]
-    allowed_ids: [212409751391305729]
+    allowed_ids: []
     blocked_ids: []
 
   roles:
