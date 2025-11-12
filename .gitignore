@@ -11,3 +11,6 @@
 !config-example.yaml
 !docker-compose.yaml
 !requirements.txt
+
+!config.yaml
+!fly.toml
