@@ -3,15 +3,19 @@ from base64 import b64encode
 from dataclasses import dataclass, field
 from datetime import datetime
 import logging
+import os
 from typing import Any, Literal, Optional
 
 import discord
 from discord.app_commands import Choice
 from discord.ext import commands
 from discord.ui import LayoutView, TextDisplay
+from dotenv import load_dotenv
 import httpx
 from openai import AsyncOpenAI
 import yaml
+
+load_dotenv()
 
 logging.basicConfig(
     level=logging.INFO,
@@ -141,8 +145,8 @@ async def on_message(new_msg: discord.Message) -> None:
 
     provider_config = config["providers"][provider]
 
-    base_url = provider_config["base_url"]
-    api_key = provider_config.get("api_key", "sk-no-key-required")
+    base_url = "https://openrouter.ai/api/v1"
+    api_key = os.environ.get("OPENROUTER_API_KEY")
     openai_client = AsyncOpenAI(base_url=base_url, api_key=api_key)
 
     model_parameters = config["models"].get(provider_slash_model, None)
@@ -328,7 +332,7 @@ async def on_message(new_msg: discord.Message) -> None:
 
 
 async def main() -> None:
-    await discord_bot.start(config["bot_token"])
+    await discord_bot.start(os.environ.get("DISCORD_BOT_TOKEN"))
 
 
 try:
